@@ -1,1 +1,1 @@
-import cards
+from assets import cards
