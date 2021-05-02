@@ -4,6 +4,7 @@ Models an event card
 
 from __future__ import annotations
 
+import os.path
 import typing
 from dataclasses import dataclass, field
 
@@ -73,3 +74,15 @@ class EventCard:
                 option.shuffle_card_ids = [self._id]
 
         return None
+
+    @property
+    def picture_path(self) -> str:
+        path = os.path.abspath(
+            os.path.join(
+                __file__,
+                "..", "..",
+                "assets", "cards",
+                f"Card{self._id}.png",
+            )
+        )
+        return path
