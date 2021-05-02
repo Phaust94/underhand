@@ -9,7 +9,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.scatter import Scatter
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, NumericProperty
 
 
 class Picture(Scatter):
@@ -22,6 +22,7 @@ class Picture(Scatter):
     '''
 
     source = StringProperty(None)
+    image_ratio = NumericProperty(None)
 
 
 class UnderhandApp(App):
@@ -40,6 +41,7 @@ class UnderhandApp(App):
             source=cur_card,
             do_rotation=False, do_scale=False,
             do_translation_y=False,
+            image_ratio=1,
         )
         # add to the main field
         root.add_widget(picture)
