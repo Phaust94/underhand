@@ -60,6 +60,31 @@ GODS_DEMAND_SACRIFICE = EventCard(
     ]
 )
 
+WRATH_OF_THE_GODS = EventCard(
+    5,
+    999,
+    'special',
+    [
+        CardOption(
+            "Appease them with a large sacrifice",
+            resources_required=ResourceList.from_resources(
+                ResourceAmount(Resource.Cultist, 5)
+            )
+        ),
+        CardOption(
+            "Appease them with a sacred offering",
+            resources_required=ResourceList.from_resources(
+                ResourceAmount(Resource.Relic, 1)
+            )
+        ),
+        CardOption(
+            "The end has come",
+            lose_game=True
+        )
+    ],
+    unique_event=True
+)
+
 PERFORM_HARUSPICY = EventCard(
     21,
     1,
@@ -79,7 +104,7 @@ PERFORM_HARUSPICY = EventCard(
 ORGAN_HARVEST = EventCard(
     23,
     1,
-    'card',
+    'blessing',
     [
         CardOption(
             "We need the cash",

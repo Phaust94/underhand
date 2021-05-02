@@ -46,6 +46,8 @@ class CardOption:
     ] = field(default_factory=ResourceList)
     resources_received: ResourceList = field(default_factory=ResourceList)
     taken_cards: str = None
+    win_game: bool = False
+    lose_game: bool = False
 
     shuffle_card_ids: typing.List[int] = field(default=None)
     foresight: int = 0
@@ -65,6 +67,7 @@ class EventCard:
     dupe_limit: int = 999
     tier: str = 'card'
     options: typing.List[CardOption] = field(default_factory=list)
+    unique_event: bool = False
 
     def __post_init__(self):
         if len(self.options) > 3:
