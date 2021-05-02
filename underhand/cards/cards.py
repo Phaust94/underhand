@@ -6,8 +6,7 @@ from underhand.cards.card import CardOption, EventCard, ResourceList, ResourceAm
 from underhand.cards.resource import Resource
 
 __all__ = [
-    "TRAVELLING_SALESPERSON",
-    "PERFORM_HARUSPICY",
+    "CARDS",
 ]
 
 TRAVELLING_SALESPERSON = EventCard(
@@ -48,3 +47,35 @@ PERFORM_HARUSPICY = EventCard(
         CardOption("We need the food"),
     ]
 )
+
+ORGAN_HARVEST = EventCard(
+    23,
+    [
+        CardOption(
+            "We need the cash",
+            resources_required=ResourceList.from_resources(
+                ResourceAmount(Resource.Cultist | Resource.Prisoner, 1),
+            ),
+            resources_received=ResourceList.from_resources(
+                ResourceAmount(Resource.Money, 2),
+                ResourceAmount(Resource.Prisoner, 1)
+            )
+        ),
+        CardOption(
+            "We've got the meals",
+            resources_required=ResourceList.from_resources(
+                ResourceAmount(Resource.Cultist | Resource.Prisoner, 1),
+            ),
+            resources_received=ResourceList.from_resources(
+                ResourceAmount(Resource.Food, 2),
+                ResourceAmount(Resource.Prisoner, 1)
+            )
+        ),
+        CardOption("Save the salughter for another day"),
+    ]
+)
+
+CARDS = [
+    TRAVELLING_SALESPERSON, PERFORM_HARUSPICY, ORGAN_HARVEST,
+]
+
