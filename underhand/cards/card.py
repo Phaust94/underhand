@@ -45,9 +45,10 @@ class CardOption:
         typing.Callable[[ResourceList], ResourceList],
     ] = field(default_factory=ResourceList)
     resources_received: ResourceList = field(default_factory=ResourceList)
+    taken_cards: str = None
 
     shuffle_card_ids: typing.List[int] = field(default=None)
-    foresight: bool = False
+    foresight: int = 0
 
     is_available: typing.Union[
         bool,
@@ -61,8 +62,9 @@ DUMMY_OPTION = CardOption(is_available=False)
 @dataclass
 class EventCard:
     _id: int
-    options: typing.List[CardOption] = field(default_factory=list)
     dupe_limit: int = 999
+    tier: str = 'card'
+    options: typing.List[CardOption] = field(default_factory=list)
 
     def __post_init__(self):
         if len(self.options) > 3:

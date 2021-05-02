@@ -25,7 +25,7 @@ for stuff in can:
         result.append(stuff[8])
     if "prisoner" in stuff:
         result.append(stuff[12])
-    if "suspicion" in stuff:
+    if '''"suspicion":''' in stuff:
         result.append(stuff[13])
     if "iswin" in stuff:
         result.append(stuff[9:-2])

@@ -11,6 +11,8 @@ __all__ = [
 
 TRAVELLING_SALESPERSON = EventCard(
     1,
+    1,
+    'card',
     [
         CardOption(
             "Buy Supplies",
@@ -34,15 +36,41 @@ TRAVELLING_SALESPERSON = EventCard(
     ]
 )
 
+GODS_DEMAND_SACRIFICE = EventCard(
+    4,
+    1,
+    'card',
+    [
+        CardOption(
+            "Sacrifice Prisoners",
+            resources_required=ResourceList.from_resources(
+                ResourceAmount(Resource.Prisoner, 2),
+            )
+        ),
+        CardOption(
+            "Sacrifice a Cultist",
+            resources_required=ResourceList.from_resources(
+                ResourceAmount(Resource.Cultist, 1),
+            )
+        ),
+        CardOption(
+            "We don't have anyone to spare",
+            taken_cards='WRATH_OF_THE_GODS'
+        )
+    ]
+)
+
 PERFORM_HARUSPICY = EventCard(
     21,
+    1,
+    'blessing',
     [
         CardOption(
             "Make a sacrifice",
             resources_required=ResourceList.from_resources(
                 ResourceAmount(Resource.Food, 1),
             ),
-            foresight=True,
+            foresight=1,
         ),
         CardOption("We need the food"),
     ]
@@ -50,6 +78,8 @@ PERFORM_HARUSPICY = EventCard(
 
 ORGAN_HARVEST = EventCard(
     23,
+    1,
+    'card',
     [
         CardOption(
             "We need the cash",
@@ -62,7 +92,7 @@ ORGAN_HARVEST = EventCard(
             )
         ),
         CardOption(
-            "We've got the meals",
+            "We've got the meats",
             resources_required=ResourceList.from_resources(
                 ResourceAmount(Resource.Cultist | Resource.Prisoner, 1),
             ),
@@ -71,7 +101,7 @@ ORGAN_HARVEST = EventCard(
                 ResourceAmount(Resource.Prisoner, 1)
             )
         ),
-        CardOption("Save the salughter for another day"),
+        CardOption("Save the slaughter for another day"),
     ]
 )
 
