@@ -18,6 +18,13 @@ __all__ = [
 ]
 
 
+ASSET_PATH = os.path.abspath(os.path.join(
+    __file__,
+    "..", "..",
+    "assets",
+))
+
+
 @dataclass
 class ResourceAmount:
     resource_type: Resource
@@ -57,6 +64,12 @@ class CardOption:
         typing.Callable[[ResourceList], bool],
     ] = True
 
+    @property
+    def picture_path(self) -> str:
+        fn = f"OptionActive.png" if self.is_available else f"OptionDormant.png"
+        path = os.path.join(ASSET_PATH, "options", fn)
+        return path
+
 
 DUMMY_OPTION = CardOption(is_available=False)
 
@@ -82,12 +95,8 @@ class EventCard:
 
     @property
     def picture_path(self) -> str:
-        path = os.path.abspath(
-            os.path.join(
-                __file__,
-                "..", "..",
-                "assets", "cards",
+        path = os.path.join(
+                ASSET_PATH, "cards",
                 f"Card{self._id}.png",
-            )
         )
         return path
