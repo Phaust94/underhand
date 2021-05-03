@@ -16,5 +16,3 @@ class Resource(enum.Flag):
     Cultist = enum.auto()
     Prisoner = enum.auto()
     Money = enum.auto()
-    Win = enum.auto()
-    Lose = enum.auto()

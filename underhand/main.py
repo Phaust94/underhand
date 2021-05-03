@@ -104,10 +104,10 @@ class EventCard(Image):
         cl.add_widget(
             Label(
                 # pos_hint={"center_y": 0.95,},
-                # pos=(1, 1),
+                pos=(100, 100),
                 text=option.name,
                 color=(0, 0, 0),
-                text_size=option_card.texture_size
+                # text_size=option_card.texture_size
                 # pos=(100, 100)
             )
         )
@@ -135,7 +135,7 @@ class EventCard(Image):
             if not self.options_enabled:
                 option_card = OptionCard(
                     size_hint_x=CARD_SIZE,
-                    size_hint_y=1,
+                    size_hint_y=0.25,
                     pos_hint={"center_x": START + i * X_STEP, "center_y": 0.62},
                     allow_stretch=True,
                     # op_id=i + 1,
