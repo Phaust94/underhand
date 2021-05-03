@@ -55,7 +55,7 @@ GODS_DEMAND_SACRIFICE = EventCard(
         ),
         CardOption(
             "We don't have anyone to spare",
-            shuffle_card_ids=[1]
+            taken_cards='WRATH_OF_THE_GODS'
         )
     ]
 )
@@ -133,3 +133,4 @@ ORGAN_HARVEST = EventCard(
 CARDS = [
     TRAVELLING_SALESPERSON, PERFORM_HARUSPICY, ORGAN_HARVEST,
 ]
+

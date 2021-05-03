@@ -9,6 +9,8 @@ import typing
 from dataclasses import dataclass, field
 
 from underhand.cards.resource import Resource
+from underhand.cards.foresight import ForesightOption
+from underhand.cards.card_tier import CardTier
 
 __all__ = [
     "EventCard",
@@ -16,6 +18,13 @@ __all__ = [
     "ResourceList",
     "ResourceAmount",
 ]
+
+
+ASSET_PATH = os.path.abspath(os.path.join(
+    __file__,
+    "..", "..",
+    "assets",
+))
 
 
 @dataclass
@@ -36,6 +45,13 @@ class ResourceList:
     def from_resources(cls, *resources: ResourceAmount) -> ResourceList:
         return cls(list(resources))
 
+    def resource_amount(self, resource_type: Resource) -> int:
+        for res in self.resources:
+            if res.resource_type is resource_type:
+                return res.amount
+        return 0
+
+
 
 @dataclass
 class CardOption:
@@ -45,17 +61,22 @@ class CardOption:
         typing.Callable[[ResourceList], ResourceList],
     ] = field(default_factory=ResourceList)
     resources_received: ResourceList = field(default_factory=ResourceList)
-    taken_cards: list = None
-    win_game: str = ''
+    win_game: bool = False
     lose_game: bool = False
 
     shuffle_card_ids: typing.List[int] = field(default=None)
-    foresight: int = 0
+    foresight: ForesightOption = ForesightOption.NoForesight
 
     is_available: typing.Union[
         bool,
         typing.Callable[[ResourceList], bool],
     ] = True
+
+    @property
+    def picture_path(self) -> str:
+        fn = f"OptionActive.png" if self.is_available else f"OptionDormant.png"
+        path = os.path.join(ASSET_PATH, "options", fn)
+        return path
 
 
 DUMMY_OPTION = CardOption(is_available=False)
@@ -65,7 +86,7 @@ DUMMY_OPTION = CardOption(is_available=False)
 class EventCard:
     _id: int
     dupe_limit: int = 999
-    tier: str = 'card'
+    tier: CardTier = CardTier.Regular
     options: typing.List[CardOption] = field(default_factory=list)
     unique_event: bool = False
 
@@ -82,12 +103,8 @@ class EventCard:
 
     @property
     def picture_path(self) -> str:
-        path = os.path.abspath(
-            os.path.join(
-                __file__,
-                "..", "..",
-                "assets", "cards",
+        path = os.path.join(
+                ASSET_PATH, "cards",
                 f"Card{self._id}.png",
-            )
         )
         return path
