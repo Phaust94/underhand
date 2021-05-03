@@ -45,8 +45,8 @@ class CardOption:
         typing.Callable[[ResourceList], ResourceList],
     ] = field(default_factory=ResourceList)
     resources_received: ResourceList = field(default_factory=ResourceList)
-    taken_cards: str = None
-    win_game: bool = False
+    taken_cards: list = None
+    win_game: str = ''
     lose_game: bool = False
 
     shuffle_card_ids: typing.List[int] = field(default=None)

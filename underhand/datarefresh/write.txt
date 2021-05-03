@@ -1,0 +1,56 @@
+
+Traveling Salesperson = EventCard(
+    1,
+    1,
+    'card',
+    [
+        CardOption(
+            Buy Supplies,
+            resources_required=ResourceList.from_resources(
+                ResourceAmount(Resource.Relic, 0),
+                ResourceAmount(Resource.Money, 2),
+                ResourceAmount(Resource.Cultist, 0),
+                ResourceAmount(Resource.Food, 0),
+                ResourceAmount(Resource.Prisoner, 0),
+                ResourceAmount(Resource.Suspicion, 0),
+                ResourceAmount(Resource.Cultist | Resource.Prisoner, 0),
+            ),
+            resources_received=ResourceList.from_resources(
+                ResourceAmount(Resource.Relic, 0),
+                ResourceAmount(Resource.Money, 0),
+                ResourceAmount(Resource.Cultist, 0),
+                ResourceAmount(Resource.Food, 1),
+                ResourceAmount(Resource.Prisoner, 0),
+                ResourceAmount(Resource.Suspicion, 0),
+                
+            )
+            foresight=1
+            win_game=
+            lose_game=False
+        ),
+        CardOption(
+            Decline to Trade,
+            resources_required=ResourceList.from_resources(
+                ResourceAmount(Resource.Relic, 0),
+                ResourceAmount(Resource.Money, 0),
+                ResourceAmount(Resource.Cultist, 0),
+                ResourceAmount(Resource.Food, 0),
+                ResourceAmount(Resource.Prisoner, 0),
+                ResourceAmount(Resource.Suspicion, 0),
+            ),
+            resources_received=ResourceList.from_resources(
+                ResourceAmount(Resource.Relic, 0),
+                ResourceAmount(Resource.Money, 0),
+                ResourceAmount(Resource.Cultist, 0),
+                ResourceAmount(Resource.Food, 0),
+                ResourceAmount(Resource.Prisoner, 0),
+                ResourceAmount(Resource.Suspicion, 0),
+                ResourceAmount(Resource.Cultist | Resource.Prisoner, 0),
+            )
+            foresight=0
+            win_game=
+            lose_game=False
+        ),
+        CardOption("Decline to Trade"),
+    ]
+)

@@ -1,3 +1,4 @@
+# OBSOLETE
 # every card in-game
 
 # basic class for the cards; order determines how a card is shuffled into the deck, options are the displayed options:
