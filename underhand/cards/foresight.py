@@ -5,11 +5,11 @@ Foresight options
 import enum
 
 __all__ = [
-    "ForesightOption",
+    "Foresight",
 ]
 
 
-class ForesightOption(enum.Enum):
+class Foresight(enum.Enum):
     NoForesight = enum.auto()
     Foresight = enum.auto()
     ForesightWithDiscard = enum.auto()

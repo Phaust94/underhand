@@ -3,6 +3,8 @@ Actual card instances
 """
 
 from underhand.cards.card import CardOption, EventCard, ResourceList, ResourceAmount
+from underhand.cards.card_tier import CardTier
+from underhand.cards.foresight import ForesightOption
 from underhand.cards.resource import Resource
 
 __all__ = [
@@ -12,7 +14,7 @@ __all__ = [
 TRAVELLING_SALESPERSON = EventCard(
     1,
     1,
-    'card',
+    CardTier.Regular,
     [
         CardOption(
             "Buy Supplies",
@@ -39,7 +41,7 @@ TRAVELLING_SALESPERSON = EventCard(
 GODS_DEMAND_SACRIFICE = EventCard(
     4,
     1,
-    'card',
+    CardTier.Regular,
     [
         CardOption(
             "Sacrifice Prisoners",
@@ -55,7 +57,7 @@ GODS_DEMAND_SACRIFICE = EventCard(
         ),
         CardOption(
             "We don't have anyone to spare",
-            taken_cards='WRATH_OF_THE_GODS'
+            shuffle_card_ids=[5]
         )
     ]
 )
@@ -63,7 +65,7 @@ GODS_DEMAND_SACRIFICE = EventCard(
 WRATH_OF_THE_GODS = EventCard(
     5,
     999,
-    'special',
+    CardTier.Special,
     [
         CardOption(
             "Appease them with a large sacrifice",
@@ -88,14 +90,14 @@ WRATH_OF_THE_GODS = EventCard(
 PERFORM_HARUSPICY = EventCard(
     21,
     1,
-    'blessing',
+    CardTier.Blessing,
     [
         CardOption(
             "Make a sacrifice",
             resources_required=ResourceList.from_resources(
                 ResourceAmount(Resource.Food, 1),
             ),
-            foresight=1,
+            foresight=ForesightOption.Foresight,
         ),
         CardOption("We need the food"),
     ]
@@ -104,7 +106,7 @@ PERFORM_HARUSPICY = EventCard(
 ORGAN_HARVEST = EventCard(
     23,
     1,
-    'blessing',
+    CardTier.Blessing,
     [
         CardOption(
             "We need the cash",

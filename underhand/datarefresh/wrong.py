@@ -63,8 +63,8 @@ for card_id, card in can.items():
     result.append(card["option3"]["islose"])
 
     middleman = str(result[1])
-    middleman.replace(' ', '_')
-    middleman.upper()
+    middleman = middleman.replace(' ', '_')
+    middleman = middleman.upper()
     result[1] = middleman
     if result[19] == 0:
         result[19] = False
@@ -74,12 +74,72 @@ for card_id, card in can.items():
         result[37] = False
     if result[37] == 1:
         result[37] = True
+    if result[5] == 0:
+        result[5] = 'NoForesight'
+    if result[5] == 1:
+        result[5] = 'Foresight'
+    if result[5] == 2:
+        result[5] = 'ForesightWithDiscard'
+    if result[22] == 0:
+        result[22] = 'NoForesight'
+    if result[22] == 1:
+        result[22] = 'Foresight'
+    if result[22] == 2:
+        result[22] = 'ForesightWithDiscard'
+    if result[40] == 0:
+        result[40] = 'NoForesight'
+    if result[40] == 1:
+        result[40] = 'Foresight'
+    if result[40] == 2:
+        result[40] = 'ForesightWithDiscard'
+    if result[18] == '':
+        result[18] = 'NoWin'
+    if result[18] == 'God of Beginnings':
+        result[18] = 'GodOfBeginnings'
+    if result[18] == 'Rhybaax':
+        result[18] = 'Rhybaax'
+    if result[18] == "Jhai'lungr":
+        result[18] = 'JhaiLungr'
+    if result[18] == 'Kekujira':
+        result[18] = 'Kekujira'
+    if result[18] == 'Yacare':
+        result[18] = 'Yacare'
+    if result[18] == "Uhl'uht'c":
+        result[18] = 'UhlUhtC'
+    if result[36] == '':
+        result[36] = 'NoWin'
+    if result[36] == 'God of Beginnings':
+        result[36] = 'GodOfBeginnings'
+    if result[36] == 'Rhybaax':
+        result[36] = 'Rhybaax'
+    if result[36] == "Jhai'lungr":
+        result[36] = 'JhaiLungr'
+    if result[36] == 'Kekujira':
+        result[36] = 'Kekujira'
+    if result[36] == 'Yacare':
+        result[36] = 'Yacare'
+    if result[36] == "Uhl'uht'c":
+        result[36] = 'UhlUhtC'
+    if result[54] == '':
+        result[54] = 'NoWin'
+    if result[54] == 'God of Beginnings':
+        result[54] = 'GodOfBeginnings'
+    if result[54] == 'Rhybaax':
+        result[54] = 'Rhybaax'
+    if result[54] == "Jhai'lungr":
+        result[54] = 'JhaiLungr'
+    if result[54] == 'Kekujira':
+        result[54] = 'Kekujira'
+    if result[54] == 'Yacare':
+        result[54] = 'Yacare'
+    if result[54] == "Uhl'uht'c":
+        result[54] = 'UhlUhtC'
 
     shut.write(f'''
 {result[1]} = EventCard(
     {result[0]},
     {result[5]},
-    'card',
+    CardTier.Regular,
     [
         CardOption(
             {result[2]},
@@ -101,8 +161,8 @@ for card_id, card in can.items():
                 ResourceAmount(Resource.Suspicion, {result[17]}),
                 
             )
-            foresight={result[5]}
-            win_game={result[18]}
+            foresight=Foresight.{result[5]}
+            Win.{result[18]}
             lose_game={result[19]}
         ),
         CardOption(
@@ -124,8 +184,8 @@ for card_id, card in can.items():
                 ResourceAmount(Resource.Suspicion, {result[53]}),
                 ResourceAmount(Resource.Cultist | Resource.Prisoner, {result[21]}),
             )
-            foresight={result[22]}
-            win_game={result[36]}
+            foresight=Foresight.{result[22]}
+            win_game=Win.{result[36]}
             lose_game={result[37]}
         ),
         CardOption("Decline to Trade"),

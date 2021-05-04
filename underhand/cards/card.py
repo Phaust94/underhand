@@ -19,7 +19,6 @@ __all__ = [
     "ResourceAmount",
 ]
 
-
 ASSET_PATH = os.path.abspath(os.path.join(
     __file__,
     "..", "..",
@@ -52,7 +51,6 @@ class ResourceList:
         return 0
 
 
-
 @dataclass
 class CardOption:
     name: str = None
@@ -61,7 +59,7 @@ class CardOption:
         typing.Callable[[ResourceList], ResourceList],
     ] = field(default_factory=ResourceList)
     resources_received: ResourceList = field(default_factory=ResourceList)
-    win_game: bool = False
+    win_game:
     lose_game: bool = False
 
     shuffle_card_ids: typing.List[int] = field(default=None)
@@ -104,7 +102,7 @@ class EventCard:
     @property
     def picture_path(self) -> str:
         path = os.path.join(
-                ASSET_PATH, "cards",
-                f"Card{self._id}.png",
+            ASSET_PATH, "cards",
+            f"Card{self._id}.png",
         )
         return path

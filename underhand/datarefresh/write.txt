@@ -1,8 +1,8 @@
 
-Traveling Salesperson = EventCard(
+TRAVELING_SALESPERSON = EventCard(
     1,
-    1,
-    'card',
+    Foresight,
+    CardTier.Regular,
     [
         CardOption(
             Buy Supplies,
@@ -24,7 +24,7 @@ Traveling Salesperson = EventCard(
                 ResourceAmount(Resource.Suspicion, 0),
                 
             )
-            foresight=1
+            foresight=ForesightOption.Foresight
             win_game=
             lose_game=False
         ),
