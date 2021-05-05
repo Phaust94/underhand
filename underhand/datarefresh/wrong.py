@@ -166,6 +166,29 @@ for card_id, card in can.items():
             lose_game={result[19]}
         ),
         CardOption(
+            {result[20]},
+            resources_required=ResourceList.from_resources(
+                ResourceAmount(Resource.Relic, {result[24]}),
+                ResourceAmount(Resource.Money, {result[25]}),
+                ResourceAmount(Resource.Cultist, {result[26]}),
+                ResourceAmount(Resource.Food, {result[27]}),
+                ResourceAmount(Resource.Prisoner, {result[28]}),
+                ResourceAmount(Resource.Suspicion, {result[29]}),
+                ResourceAmount(Resource.Cultist | Resource.Prisoner, {result[21]}),
+            ),
+            resources_received=ResourceList.from_resources(
+                ResourceAmount(Resource.Relic, {result[30]}),
+                ResourceAmount(Resource.Money, {result[31]}),
+                ResourceAmount(Resource.Cultist, {result[32]}),
+                ResourceAmount(Resource.Food, {result[33]}),
+                ResourceAmount(Resource.Prisoner, {result[34]}),
+                ResourceAmount(Resource.Suspicion, {result[35]}),
+            )
+            foresight=Foresight.{result[22]}
+            win_game=Win.{result[36]}
+            lose_game={result[37]}
+        ),
+        CardOption(
             {result[38]},
             resources_required=ResourceList.from_resources(
                 ResourceAmount(Resource.Relic, {result[42]}),
@@ -174,6 +197,7 @@ for card_id, card in can.items():
                 ResourceAmount(Resource.Food, {result[45]}),
                 ResourceAmount(Resource.Prisoner, {result[46]}),
                 ResourceAmount(Resource.Suspicion, {result[47]}),
+                ResourceAmount(Resource.Cultist | Resource.Prisoner, {result[39]}),
             ),
             resources_received=ResourceList.from_resources(
                 ResourceAmount(Resource.Relic, {result[48]}),
@@ -182,13 +206,11 @@ for card_id, card in can.items():
                 ResourceAmount(Resource.Food, {result[51]}),
                 ResourceAmount(Resource.Prisoner, {result[52]}),
                 ResourceAmount(Resource.Suspicion, {result[53]}),
-                ResourceAmount(Resource.Cultist | Resource.Prisoner, {result[21]}),
             )
-            foresight=Foresight.{result[22]}
-            win_game=Win.{result[36]}
-            lose_game={result[37]}
+            foresight=Foresight.{result[40]}
+            win_game=Win.{result[54]}
+            lose_game={result[55]}
         ),
-        CardOption("Decline to Trade"),
     ]
 )''')
     break
