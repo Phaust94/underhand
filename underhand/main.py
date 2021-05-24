@@ -13,7 +13,7 @@ from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
 from kivy.uix.scatter import Scatter
-from kivy.properties import StringProperty, NumericProperty, BooleanProperty
+from kivy.properties import StringProperty, NumericProperty, BooleanProperty, ReferenceListProperty
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
@@ -85,6 +85,8 @@ CURRENT_DECK_SHUFFLE = copy.copy(CURRENT_DECK)
 random.shuffle(CURRENT_DECK_SHUFFLE)
 CURRENT_CARD = CURRENT_DECK[0]
 
+CURRENT_OPTIONS = {}
+
 
 class EventCard(Image):
 
@@ -100,17 +102,25 @@ class EventCard(Image):
         print(value)
 
     def add_text(self, dt, option, cl, option_card):
-        # print("added text")
-        cl.add_widget(
-            Label(
+        print("added text")
+        label = Label(
                 # pos_hint={"center_y": 0.95,},
-                pos=(100, 100),
+                pos_hint={"top": 1, "right": 1.1},
+                size_hint=(1, None),
+                # pos=(0, 0),
                 text=option.name,
                 color=(0, 0, 0),
-                # text_size=option_card.texture_size
+                # text_size=(option_card.texture_size[0], None)
                 # pos=(100, 100)
+        )
+
+        label.bind(
+            width=lambda *x: label.setter('text_size')(
+                label, (label.width + 10, None),
+                # texture_size=lambda *y: label.setter('height')(label, label.texture_size[1])
             )
         )
+        cl.add_widget(label)
         print(option_card.size)
         return False
 
@@ -140,15 +150,17 @@ class EventCard(Image):
                     allow_stretch=True,
                     # op_id=i + 1,
                     source=option.picture_path,
-                    id=f"option_{i + 1}",
                 )
                 self.parent.add_widget(option_card)
+
+                CURRENT_OPTIONS[f"option_{i + 1}"] = option_card
+
                 Clock.schedule_once(
                         lambda dt, option_card=option_card, option=option: self.create_child(
                             dt, option_card, option)
                 )
             else:
-                val = self.parent.ids[f"option_{i + 1}"]
+                val = CURRENT_OPTIONS[f"option_{i + 1}"]
                 self.parent.remove_widget(val)
         self.options_enabled = not self.options_enabled
         return None
@@ -178,7 +190,6 @@ class BG(Image):
 
 
 class UnderhandGame(FloatLayout):
-
     def __init__(self, **kwargs):
         super(UnderhandGame, self).__init__(**kwargs)
 
