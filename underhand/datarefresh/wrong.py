@@ -10,7 +10,7 @@ for card_id, card in can.items():
     result.append(card["option1"]["optiontext"])
     result.append(card["option1"]["cultistequalsprisoner"])
     result.append(int(card["option1"]["foresight"]["hasforesight"]) + int(card["option1"]["foresight"]["candiscard"]))
-    result.append(int(card["option1"]["shuffle"]["numcards"]) + 1)
+    result.append(card["option1"]["shuffle"]["numcards"])
     result.append(card["option1"]["requirements"]["relic"])
     result.append(card["option1"]["requirements"]["money"])
     result.append(card["option1"]["requirements"]["cultist"])
@@ -28,7 +28,7 @@ for card_id, card in can.items():
     result.append(card["option2"]["optiontext"])
     result.append(card["option2"]["cultistequalsprisoner"])
     result.append(int(card["option2"]["foresight"]["hasforesight"]) + int(card["option2"]["foresight"]["candiscard"]))
-    result.append(int(card["option2"]["shuffle"]["numcards"]) + 1)
+    result.append(card["option2"]["shuffle"]["numcards"])
     result.append(card["option2"]["requirements"]["relic"])
     result.append(card["option2"]["requirements"]["money"])
     result.append(card["option2"]["requirements"]["cultist"])
@@ -46,7 +46,7 @@ for card_id, card in can.items():
     result.append(card["option3"]["optiontext"])
     result.append(card["option3"]["cultistequalsprisoner"])
     result.append(int(card["option3"]["foresight"]["hasforesight"]) + int(card["option3"]["foresight"]["candiscard"]))
-    result.append(int(card["option3"]["shuffle"]["numcards"]) + 1)
+    result.append(card["option3"]["shuffle"]["numcards"])
     result.append(card["option3"]["requirements"]["relic"])
     result.append(card["option3"]["requirements"]["money"])
     result.append(card["option3"]["requirements"]["cultist"])
@@ -62,6 +62,12 @@ for card_id, card in can.items():
     result.append(card["option3"]["iswin"])
     result.append(card["option3"]["islose"])
 
+    middleman = int(result[5]) + 1
+    result[5] = middleman
+    middleman = int(result[23]) + 1
+    result[23] = middleman
+    middleman = int(result[41]) + 1
+    result[41] = middleman
     middleman = str(result[1])
     middleman = middleman.replace(' ', '_')
     middleman = middleman.upper()
@@ -74,12 +80,12 @@ for card_id, card in can.items():
         result[37] = False
     if result[37] == 1:
         result[37] = True
-    if result[5] == 0:
-        result[5] = 'NoForesight'
-    if result[5] == 1:
-        result[5] = 'Foresight'
-    if result[5] == 2:
-        result[5] = 'ForesightWithDiscard'
+    if result[4] == 0:
+        result[4] = 'NoForesight'
+    if result[4] == 1:
+        result[4] = 'Foresight'
+    if result[4] == 2:
+        result[4] = 'ForesightWithDiscard'
     if result[22] == 0:
         result[22] = 'NoForesight'
     if result[22] == 1:
@@ -213,7 +219,7 @@ for card_id, card in can.items():
         ),
     ]
 )''')
-    break
+result = []
 
 print(result)
 shut.close()
