@@ -1,10 +1,5 @@
-import copy
-import random
-
-import kivy
+import copy, random, kivy, os
 kivy.require("2.0.0")
-
-import os
 
 from kivy.app import App
 from kivy.uix.widget import Widget

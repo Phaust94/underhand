@@ -4,7 +4,7 @@ Actual card instances
 
 from underhand.cards.card import CardOption, EventCard, ResourceList, ResourceAmount
 from underhand.cards.card_tier import CardTier
-from underhand.cards.foresight import ForesightOption
+from underhand.cards.foresight import Foresight
 from underhand.cards.resource import Resource
 
 __all__ = [
@@ -97,7 +97,7 @@ PERFORM_HARUSPICY = EventCard(
             resources_required=ResourceList.from_resources(
                 ResourceAmount(Resource.Food, 1),
             ),
-            foresight=ForesightOption.Foresight,
+            foresight=Foresight.Foresight,
         ),
         CardOption("We need the food"),
     ]
@@ -135,4 +135,3 @@ ORGAN_HARVEST = EventCard(
 CARDS = [
     TRAVELLING_SALESPERSON, PERFORM_HARUSPICY, ORGAN_HARVEST,
 ]
-

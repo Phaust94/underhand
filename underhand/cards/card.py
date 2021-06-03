@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 from underhand.cards.resource import Resource
 from underhand.cards.foresight import Foresight
 from underhand.cards.card_tier import CardTier
-from underhand.cards.godwins import Win
+from underhand.cards.gods import God
 
 __all__ = [
     "EventCard",
@@ -60,7 +60,7 @@ class CardOption:
         typing.Callable[[ResourceList], ResourceList],
     ] = field(default_factory=ResourceList)
     resources_received: ResourceList = field(default_factory=ResourceList)
-    win_game: Win = Win.NoWin
+    win_game: God = God.NoWin
     lose_game: bool = False
 
     shuffle_card_ids: typing.List[int] = field(default=None)

@@ -1,15 +1,15 @@
 """
-God win options
+God umbrella values
 """
 
 import enum
 
 __all__ = [
-    "Win",
+    "God",
 ]
 
 
-class Win(enum.Enum):
+class God(enum.Enum):
     NoWin = enum.auto()
     GodOfBeginnings = enum.auto()
     Rhybaax = enum.auto()
